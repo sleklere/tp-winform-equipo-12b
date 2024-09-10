@@ -1,6 +1,6 @@
 ﻿namespace Prog3Actividad2
 {
-    partial class Form1
+    partial class NuevoArticulo
     {
         /// <summary>
         /// Required designer variable.

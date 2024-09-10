@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B02FA80-DDA5-4C1B-9BE3-0A147717912D}</ProjectGuid>
+    <ProjectGuid>{48CB4D0C-66D0-4B93-9354-0506ADAF8C70}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Prog3Actividad2</RootNamespace>
-    <AssemblyName>Prog3Actividad2</AssemblyName>
+    <RootNamespace>DBHandler</RootNamespace>
+    <AssemblyName>DBHandler</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,22 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoDatos.cs" />
-    <Compile Include="NuevoArticulo.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NuevoArticulo.Designer.cs">
-      <DependentUpon>NuevoArticulo.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceDB.cs" />
-    <Compile Include="vistaPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="vistaPrincipal.Designer.cs">
-      <DependentUpon>vistaPrincipal.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,9 +63,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="vistaPrincipal.resx">
-      <DependentUpon>vistaPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,12 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio2\Dominio.csproj">
-      <Project>{7a0c3059-a673-4ccb-8795-75c31c8bbf0b}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
