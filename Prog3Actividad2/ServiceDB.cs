@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Prog3Actividad2
 {
@@ -46,5 +47,109 @@ namespace Prog3Actividad2
                 accesoDatos.CerrarConexion();
             }
         }
+
+        public void Agregar(Articulo art)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+                datos.AgregarParametro("@Codigo", art.Codigo);
+                datos.AgregarParametro("@Nombre", art.Nombre);
+                datos.AgregarParametro("@Descripcion", art.Descripcion);
+                datos.AgregarParametro("@IdMarca", art.Marca.Id);
+                datos.AgregarParametro("@IdCategoria", art.Categoria.Id);
+                datos.AgregarParametro("@Precio", art.Precio);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public List<Marca> listarMarcas()
+        {
+            List<Marca> lista = new List<Marca>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("Select Id, Descripcion From MARCAS");
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Marca aux = new Marca();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public List<Categoria> listarCategorias()
+        {
+            List<Categoria> lista = new List<Categoria>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("Select Id, Descripcion From CATEGORIAS");
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Categoria aux = new Categoria();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public void Eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.SetearConsulta("delete from ARTICULOS where id = @id");
+                datos.AgregarParametro("@id", id);
+                datos.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
+
 }

@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=localhost,1433;database=CATALOGO_P3_DB;integrated security=true;");
+            conexion = new SqlConnection("server=localhost;database=CATALOGO_P3_DB;integrated security=true;");
             comando = new SqlCommand();
         }
 
@@ -43,7 +43,26 @@ using System.Threading.Tasks;
 
         }
 
-        public void CerrarConexion()
+    public void EjecutarAccion()
+    {
+        comando.Connection = conexion;
+        try
+        {
+            conexion.Open();
+            comando.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public void AgregarParametro(string nombre, object valor)
+    {
+        comando.Parameters.AddWithValue(nombre, valor);
+    }
+
+    public void CerrarConexion()
         {
             if (lector != null)
             {

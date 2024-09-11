@@ -62,6 +62,9 @@
     <Compile Include="vistaPrincipal.Designer.cs">
       <DependentUpon>vistaPrincipal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NuevoArticulo.resx">
+      <DependentUpon>NuevoArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
