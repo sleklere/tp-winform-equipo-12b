@@ -34,6 +34,7 @@
             this.agregarNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnDetalle = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
@@ -61,13 +62,13 @@
             // catálogoToolStripMenuItem
             // 
             this.catálogoToolStripMenuItem.Name = "catálogoToolStripMenuItem";
-            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.catálogoToolStripMenuItem.Text = "Catálogo";
             // 
             // agregarNuevoToolStripMenuItem
             // 
             this.agregarNuevoToolStripMenuItem.Name = "agregarNuevoToolStripMenuItem";
-            this.agregarNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarNuevoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.agregarNuevoToolStripMenuItem.Text = "Agregar";
             this.agregarNuevoToolStripMenuItem.Click += new System.EventHandler(this.agregarNuevoToolStripMenuItem_Click);
             // 
@@ -81,7 +82,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(96, 393);
+            this.btnEliminar.Location = new System.Drawing.Point(177, 393);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 2;
@@ -89,11 +90,22 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // btnDetalle
+            // 
+            this.btnDetalle.Location = new System.Drawing.Point(96, 393);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(75, 23);
+            this.btnDetalle.TabIndex = 3;
+            this.btnDetalle.Text = "Ver detalle";
+            this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            // 
             // vistaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.menuStrip1);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.ToolStripMenuItem agregarNuevoToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnDetalle;
     }
 }

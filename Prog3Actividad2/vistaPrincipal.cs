@@ -71,5 +71,12 @@ namespace Prog3Actividad2
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Detalle detalleArticulo = new Detalle();
+            detalleArticulo.ShowDialog();
+            //Cargar();
+        }
     }
 }

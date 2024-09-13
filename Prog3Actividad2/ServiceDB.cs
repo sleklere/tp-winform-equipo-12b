@@ -73,6 +73,58 @@ namespace Prog3Actividad2
             }
         }
 
+        public void AgregarImagen(Imagen img)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                System.Console.WriteLine("aaaaaaaaaaaaa" + img.ImagenUrl + " ---- " + img.IdArticulo);
+                datos.SetearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
+                datos.AgregarParametro("@IdArticulo", img.IdArticulo);
+                datos.AgregarParametro("@ImagenUrl", img.ImagenUrl);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public int GetArticuloIdByCod(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int Id = -1;
+            try
+            {
+                datos.SetearConsulta("SELECT Id FROM ARTICULOS WHERE Codigo = @codigo");
+                //datos.SetearConsulta("SELECT Id FROM ARTICULOS");
+                datos.AgregarParametro("@codigo", codigo);
+                datos.EjecutarLectura();
+                System.Console.WriteLine("asdadada" + datos);
+
+
+                if (datos.Lector.Read())
+                {
+                    Id = (int)datos.Lector["Id"];
+                }
+
+                return Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
         public List<Marca> listarMarcas()
         {
             List<Marca> lista = new List<Marca>();

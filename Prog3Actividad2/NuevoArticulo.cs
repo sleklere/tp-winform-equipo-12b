@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Dominio;
+using static System.Net.WebRequestMethods;
 
 namespace Prog3Actividad2
 {
@@ -28,6 +29,7 @@ namespace Prog3Actividad2
         {
             Articulo art = new Articulo();
             ServiceDB service = new ServiceDB();
+            Imagen img = new Imagen();
 
             try
             {
@@ -36,20 +38,27 @@ namespace Prog3Actividad2
                 art.Descripcion = inputDescripcion.Text;
                 art.Marca = (Marca)comboMarca.SelectedItem;
                 art.Categoria = (Categoria)comboCategoria.SelectedItem;
-                //art.UrlImagen = txtUrlImagen.Text;
                 art.Precio = decimal.Parse(inputPrecio.Text);
 
-
                 service.Agregar(art);
-                MessageBox.Show("Agregado exitosamente");
-                
 
-                //Guardo imagen si la levantó localmente:
-                //if (archivo != null && !(txtUrlImagen.Text.ToUpper().Contains("HTTP")))
-                //    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                int artId = service.GetArticuloIdByCod(inputCodigo.Text);
+                if (artId != -1)
+                {
+                    img.IdArticulo = (int)artId;
+                    if (inputImagenUrl != null && inputImagenUrl.Text.ToUpper().Contains("HTTP"))
+                    {
+                        img.ImagenUrl = inputImagenUrl.Text;
+                    } else
+                    {
+                        img.ImagenUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU";
+                    }
+                    service.AgregarImagen(img);
+                }
+
+                MessageBox.Show("Agregado exitosamente");
 
                 Close();
-
             }
             catch (Exception ex)
             {
@@ -70,5 +79,23 @@ namespace Prog3Actividad2
                 MessageBox.Show(ex.ToString());
             }
         }
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(inputImagenUrl.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                imagenBox.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
+            }
+        }
+
+
     }
 }
