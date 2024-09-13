@@ -79,7 +79,6 @@ namespace Prog3Actividad2
 
             try
             {
-                System.Console.WriteLine("aaaaaaaaaaaaa" + img.ImagenUrl + " ---- " + img.IdArticulo);
                 datos.SetearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
                 datos.AgregarParametro("@IdArticulo", img.IdArticulo);
                 datos.AgregarParametro("@ImagenUrl", img.ImagenUrl);
@@ -102,11 +101,8 @@ namespace Prog3Actividad2
             try
             {
                 datos.SetearConsulta("SELECT Id FROM ARTICULOS WHERE Codigo = @codigo");
-                //datos.SetearConsulta("SELECT Id FROM ARTICULOS");
                 datos.AgregarParametro("@codigo", codigo);
                 datos.EjecutarLectura();
-                System.Console.WriteLine("asdadada" + datos);
-
 
                 if (datos.Lector.Read())
                 {
@@ -114,6 +110,36 @@ namespace Prog3Actividad2
                 }
 
                 return Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public Imagen GetImgByArticuloId(int IdArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Imagen img = new Imagen();
+
+            try
+            {
+                datos.SetearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES WHERE IdArticulo = @IdArticulo");
+                datos.AgregarParametro("@IdArticulo", IdArticulo);
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    img.Id = (int)datos.Lector["Id"];
+                    img.IdArticulo = (int)datos.Lector["IdArticulo"];
+                    img.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                }
+
+                return img;
             }
             catch (Exception ex)
             {

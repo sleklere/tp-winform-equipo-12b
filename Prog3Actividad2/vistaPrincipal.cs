@@ -39,44 +39,32 @@ namespace Prog3Actividad2
 
         }
 
-        private void agregarNuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NuevoArticulo formNuevoArticulo = new NuevoArticulo();
-            formNuevoArticulo.ShowDialog();
-            Cargar();
-        }
+        //private void agregarNuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    NuevoArticulo formNuevoArticulo = new NuevoArticulo();
+        //    formNuevoArticulo.ShowDialog();
+        //    Cargar();
+        //}
 
         private void vistaPrincipal_Load(object sender, EventArgs e)
         {
             Cargar();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            ServiceDB service = new ServiceDB();
-            Articulo art;
-
-            try
-            {
-                DialogResult respuesta = MessageBox.Show("¿Seguro querés eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
-                {
-                    art = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    service.Eliminar(art.Id);
-                    Cargar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            Detalle detalleArticulo = new Detalle();
+            Articulo art;
+            art = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            Detalle detalleArticulo = new Detalle(art);
             detalleArticulo.ShowDialog();
-            //Cargar();
+            Cargar();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            NuevoArticulo formNuevoArticulo = new NuevoArticulo();
+            formNuevoArticulo.ShowDialog();
+            Cargar();
         }
     }
 }
