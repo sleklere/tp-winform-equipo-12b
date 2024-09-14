@@ -1,4 +1,6 @@
-﻿namespace Prog3Actividad2
+﻿using Dominio;
+
+namespace Prog3Actividad2
 {
     partial class NuevoArticulo
     {

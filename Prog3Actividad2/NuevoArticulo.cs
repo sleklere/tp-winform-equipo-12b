@@ -15,9 +15,20 @@ namespace Prog3Actividad2
 {
     public partial class NuevoArticulo : Form
     {
+        private Articulo articulo;
+        private bool esModificacion;
+        public Articulo ArticuloModificado { get; private set; }
+
         public NuevoArticulo()
         {
             InitializeComponent();
+            esModificacion = false;
+        }
+        public NuevoArticulo(Articulo articuloExistente)
+        {
+            InitializeComponent();
+            esModificacion = true;
+            articulo = articuloExistente;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -31,6 +42,7 @@ namespace Prog3Actividad2
             ServiceDB service = new ServiceDB();
             Imagen img = new Imagen();
 
+
             try
             {
                 art.Codigo = inputCodigo.Text;
@@ -40,7 +52,13 @@ namespace Prog3Actividad2
                 art.Categoria = (Categoria)comboCategoria.SelectedItem;
                 art.Precio = decimal.Parse(inputPrecio.Text);
 
-                service.Agregar(art);
+                if (esModificacion) {
+                    art.Id = articulo.Id;
+                    service.Modificar(art);
+                } else
+                {
+                    service.Agregar(art);
+                }
 
                 int artId = service.GetArticuloIdByCod(inputCodigo.Text);
                 if (artId != -1)
@@ -56,8 +74,15 @@ namespace Prog3Actividad2
                     service.AgregarImagen(img);
                 }
 
-                MessageBox.Show("Agregado exitosamente");
+                if (esModificacion) {
+                    MessageBox.Show("Modificado exitosamente");
+                } else
+                {
+                    MessageBox.Show("Agregado exitosamente");
+                }
 
+                ArticuloModificado = art;
+                this.DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception ex)
@@ -72,11 +97,43 @@ namespace Prog3Actividad2
             try
             {
                 comboMarca.DataSource = service.listarMarcas();
+                comboMarca.DisplayMember = "Descripcion"; 
+                comboMarca.ValueMember = "Id";
+
                 comboCategoria.DataSource = service.listarCategorias();
+                comboCategoria.DisplayMember = "Descripcion";
+                comboCategoria.ValueMember = "Id";
+
+
+                if (articulo != null && esModificacion)
+                {
+                    try
+                    {
+                        imagenBox.Load(service.GetImgByArticuloId(articulo.Id).ImagenUrl);
+                    }
+                    catch (Exception ex)
+                    {
+                        imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
+                    }
+
+                    inputCodigo.Text = articulo.Codigo;
+                    inputNombre.Text = articulo.Nombre;
+                    inputDescripcion.Text = articulo.Descripcion;
+                    //inputImagenUrl.Text = articulo.ImagenUrl;
+                    inputPrecio.Text = articulo.Precio.ToString();
+                    comboMarca.SelectedIndex = comboMarca.FindStringExact(articulo.Marca.ToString());
+                    comboCategoria.SelectedIndex = comboCategoria.FindStringExact(articulo.Categoria.ToString());
+                    this.Text = "Modificar Artículo";
+                }
+                else
+                {
+                    this.Text = "Nuevo Artículo";
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                Console.Error.WriteLine(ex.ToString());
             }
         }
         private void textBox1_Leave(object sender, EventArgs e)

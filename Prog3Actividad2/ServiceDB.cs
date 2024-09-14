@@ -93,6 +93,34 @@ namespace Prog3Actividad2
                 datos.CerrarConexion();
             }
         }
+        public void Modificar(Articulo art)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio WHERE Id = @Id");
+
+                datos.AgregarParametro("@Codigo", art.Codigo);
+                datos.AgregarParametro("@Nombre", art.Nombre);
+                datos.AgregarParametro("@Descripcion", art.Descripcion);
+                datos.AgregarParametro("@IdMarca", art.Marca.Id);
+                datos.AgregarParametro("@IdCategoria", art.Categoria.Id);
+                datos.AgregarParametro("@Precio", art.Precio);
+                datos.AgregarParametro("@Id", art.Id); 
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
 
         public int GetArticuloIdByCod(string codigo)
         {

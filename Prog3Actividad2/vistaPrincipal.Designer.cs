@@ -62,13 +62,13 @@
             // catálogoToolStripMenuItem
             // 
             this.catálogoToolStripMenuItem.Name = "catálogoToolStripMenuItem";
-            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.catálogoToolStripMenuItem.Text = "Catálogo";
             // 
             // agregarNuevoToolStripMenuItem
             // 
             this.agregarNuevoToolStripMenuItem.Name = "agregarNuevoToolStripMenuItem";
-            this.agregarNuevoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.agregarNuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.agregarNuevoToolStripMenuItem.Text = "Agregar";
             // 
             // dgvArticulos

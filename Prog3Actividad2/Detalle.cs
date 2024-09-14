@@ -56,5 +56,36 @@ namespace Prog3Actividad2
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            ServiceDB service = new ServiceDB();
+
+            NuevoArticulo nuevoArticulo = new NuevoArticulo(artDetalle);
+            DialogResult result = nuevoArticulo.ShowDialog();
+
+            if (result == DialogResult.OK && nuevoArticulo.ArticuloModificado != null)
+            {
+                artDetalle = nuevoArticulo.ArticuloModificado;
+
+                codigo.Text = artDetalle.Codigo;
+                nombre.Text = artDetalle.Nombre;
+                descripcion.Text = artDetalle.Descripcion;
+                marca.Text = artDetalle.Marca.ToString();
+                categoria.Text = artDetalle.Categoria.ToString();
+                precio.Text = "$" + artDetalle.Precio.ToString();
+
+
+                try
+                {
+                    imagenBox.Load(service.GetImgByArticuloId(artDetalle.Id).ImagenUrl);
+                }
+                catch (Exception ex)
+                {
+                    imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
+                }
+            }
+        }
+
     }
 }
