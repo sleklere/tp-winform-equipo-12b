@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prog3Actividad2
+namespace TPWinForm_equipo12b
 {
     public partial class vistaPrincipal : Form
     {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Prog3Actividad2
+namespace TPWinForm_equipo12b
 {
     public partial class Detalle : Form
     {

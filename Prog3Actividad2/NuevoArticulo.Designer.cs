@@ -1,6 +1,6 @@
 ﻿using Dominio;
 
-namespace Prog3Actividad2
+namespace TPWinForm_equipo12b
 {
     partial class NuevoArticulo
     {

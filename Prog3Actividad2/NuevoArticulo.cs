@@ -11,7 +11,7 @@ using System.Xml.Linq;
 using Dominio;
 using static System.Net.WebRequestMethods;
 
-namespace Prog3Actividad2
+namespace TPWinForm_equipo12b
 {
     public partial class NuevoArticulo : Form
     {

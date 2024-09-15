@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6B02FA80-DDA5-4C1B-9BE3-0A147717912D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Prog3Actividad2</RootNamespace>
-    <AssemblyName>Prog3Actividad2</AssemblyName>
+    <RootNamespace>TPWinForm_equipo12b</RootNamespace>
+    <AssemblyName>TPWinfForm_equipo12b</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="vistaPrincipal.resx">
       <DependentUpon>vistaPrincipal.cs</DependentUpon>
