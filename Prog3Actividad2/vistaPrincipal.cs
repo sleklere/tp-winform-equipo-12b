@@ -24,7 +24,7 @@ namespace TPWinForm_equipo12b
             ServiceDB service = new ServiceDB();
             try
             {
-                listaArticulos = service.listar();
+                listaArticulos = service.listarArticulos();
                 dgvArticulos.DataSource = listaArticulos;
 
             }
@@ -65,6 +65,27 @@ namespace TPWinForm_equipo12b
             NuevoArticulo formNuevoArticulo = new NuevoArticulo();
             formNuevoArticulo.ShowDialog();
             Cargar();
+        }
+
+
+        private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormMarca formMarca = new FormMarca(); 
+            formMarca.ShowDialog();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NuevoArticulo formNuevoArticulo = new NuevoArticulo();
+            formNuevoArticulo.ShowDialog();
+            Cargar();
+
+        }
+
+        private void verTodasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marcas marcas = new Marcas();
+            marcas.ShowDialog();
         }
     }
 }

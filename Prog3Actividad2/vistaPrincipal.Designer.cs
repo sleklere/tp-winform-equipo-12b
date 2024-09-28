@@ -32,11 +32,21 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.marcasToolStripMenuItem,
+            this.categoriasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -71,6 +81,50 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodasToolStripMenuItem,
+            this.agregarToolStripMenuItem1});
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodasToolStripMenuItem1,
+            this.agregarToolStripMenuItem2});
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // verTodasToolStripMenuItem
+            // 
+            this.verTodasToolStripMenuItem.Name = "verTodasToolStripMenuItem";
+            this.verTodasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verTodasToolStripMenuItem.Text = "Ver";
+            this.verTodasToolStripMenuItem.Click += new System.EventHandler(this.verTodasToolStripMenuItem_Click);
+            // 
+            // agregarToolStripMenuItem1
+            // 
+            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
+            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem1.Text = "Agregar";
+            this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
+            // 
+            // verTodasToolStripMenuItem1
+            // 
+            this.verTodasToolStripMenuItem1.Name = "verTodasToolStripMenuItem1";
+            this.verTodasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.verTodasToolStripMenuItem1.Text = "Ver";
+            // 
+            // agregarToolStripMenuItem2
+            // 
+            this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
+            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem2.Text = "Agregar";
+            // 
             // vistaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -85,6 +139,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "vistaPrincipal";
             this.Load += new System.EventHandler(this.vistaPrincipal_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -97,5 +153,11 @@
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verTodasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verTodasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem2;
     }
 }

@@ -9,7 +9,7 @@ namespace TPWinForm_equipo12b
 {
     public class ServiceDB
     {
-        public List<Articulo> listar()
+        public List<Articulo> listarArticulos()
         {
             List<Articulo> articulos = new List<Articulo>();
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -47,7 +47,6 @@ namespace TPWinForm_equipo12b
                 accesoDatos.CerrarConexion();
             }
         }
-
         public void Agregar(Articulo art)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -61,6 +60,47 @@ namespace TPWinForm_equipo12b
                 datos.AgregarParametro("@IdMarca", art.Marca.Id);
                 datos.AgregarParametro("@IdCategoria", art.Categoria.Id);
                 datos.AgregarParametro("@Precio", art.Precio);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public void Agregar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("INSERT INTO MARCAS (Descripcion) VALUES (@Descripcion)");
+                datos.AgregarParametro("@Descripcion", marca.Descripcion);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public void Modificar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("UPDATE MARCAS SET Descripcion = @Descripcion WHERE Id = @Id");
+
+                datos.AgregarParametro("@Descripcion", marca.Descripcion);
+                datos.AgregarParametro("@Id", marca.Id); 
+
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -241,12 +281,27 @@ namespace TPWinForm_equipo12b
             }
         }
 
-        public void Eliminar(int id)
+        public void EliminarArticulo(int id)
         {
             try
             {
                 AccesoDatos datos = new AccesoDatos();
                 datos.SetearConsulta("delete from ARTICULOS where id = @id");
+                datos.AgregarParametro("@id", id);
+                datos.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void EliminarMarca(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.SetearConsulta("delete from MARCAS where id = @id");
                 datos.AgregarParametro("@id", id);
                 datos.EjecutarAccion();
 

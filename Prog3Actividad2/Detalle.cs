@@ -47,7 +47,7 @@ namespace TPWinForm_equipo12b
                 DialogResult respuesta = MessageBox.Show("¿Seguro querés eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    service.Eliminar(artDetalle.Id);
+                    service.EliminarArticulo(artDetalle.Id);
                     Close();
                 }
             }
