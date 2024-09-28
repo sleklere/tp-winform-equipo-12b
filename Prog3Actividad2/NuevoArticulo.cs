@@ -36,15 +36,58 @@ namespace TPWinForm_equipo12b
             Close();
         }
 
+        private bool validarForm()
+        {
+            if (string.IsNullOrWhiteSpace(inputCodigo?.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un código.");
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(inputNombre?.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un nombre.");
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(inputDescripcion?.Text))
+            {
+                MessageBox.Show("Por favor, ingrese una descripción.");
+                return true;
+            }
+            if (comboMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione una marca.");
+                return true;
+            }
+            if (comboCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione una categoría.");
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(inputPrecio?.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un precio.");
+                return true;
+            }
+            if (!decimal.TryParse(inputPrecio.Text, out decimal precio) || precio <= 0)
+            {
+                MessageBox.Show("Por favor, ingrese un precio válido mayor a 0.");
+                return true;
+            }
+
+            return false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Articulo art = new Articulo();
             ServiceDB service = new ServiceDB();
             Imagen img = new Imagen();
 
-
             try
             {
+                if (validarForm()) return;
+
+
                 art.Codigo = inputCodigo.Text;
                 art.Nombre = inputNombre.Text;
                 art.Descripcion = inputDescripcion.Text;
@@ -113,6 +156,7 @@ namespace TPWinForm_equipo12b
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.ToString());
                         imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
                     }
 
