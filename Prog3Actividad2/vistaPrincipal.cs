@@ -87,5 +87,17 @@ namespace TPWinForm_equipo12b
             Marcas marcas = new Marcas();
             marcas.ShowDialog();
         }
+
+        private void verTodasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Categorias categorias = new Categorias();
+            categorias.ShowDialog();
+        }
+
+        private void agregarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormCategoria formCategoria = new FormCategoria();
+            formCategoria.ShowDialog();
+        }
     }
 }

@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verTodasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.verTodasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +52,52 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodasToolStripMenuItem,
+            this.agregarToolStripMenuItem1});
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            // 
+            // verTodasToolStripMenuItem
+            // 
+            this.verTodasToolStripMenuItem.Name = "verTodasToolStripMenuItem";
+            this.verTodasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.verTodasToolStripMenuItem.Text = "Ver";
+            this.verTodasToolStripMenuItem.Click += new System.EventHandler(this.verTodasToolStripMenuItem_Click);
+            // 
+            // agregarToolStripMenuItem1
+            // 
+            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
+            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.agregarToolStripMenuItem1.Text = "Agregar";
+            this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodasToolStripMenuItem1,
+            this.agregarToolStripMenuItem2});
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // verTodasToolStripMenuItem1
+            // 
+            this.verTodasToolStripMenuItem1.Name = "verTodasToolStripMenuItem1";
+            this.verTodasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.verTodasToolStripMenuItem1.Text = "Ver";
+            this.verTodasToolStripMenuItem1.Click += new System.EventHandler(this.verTodasToolStripMenuItem1_Click);
+            // 
+            // agregarToolStripMenuItem2
+            // 
+            this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
+            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem2.Text = "Agregar";
+            this.agregarToolStripMenuItem2.Click += new System.EventHandler(this.agregarToolStripMenuItem2_Click);
             // 
             // dgvArticulos
             // 
@@ -80,50 +126,6 @@
             this.btnAgregar.Text = "Agregar artículo";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // marcasToolStripMenuItem
-            // 
-            this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verTodasToolStripMenuItem,
-            this.agregarToolStripMenuItem1});
-            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.marcasToolStripMenuItem.Text = "Marcas";
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verTodasToolStripMenuItem1,
-            this.agregarToolStripMenuItem2});
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            // 
-            // verTodasToolStripMenuItem
-            // 
-            this.verTodasToolStripMenuItem.Name = "verTodasToolStripMenuItem";
-            this.verTodasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.verTodasToolStripMenuItem.Text = "Ver";
-            this.verTodasToolStripMenuItem.Click += new System.EventHandler(this.verTodasToolStripMenuItem_Click);
-            // 
-            // agregarToolStripMenuItem1
-            // 
-            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
-            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.agregarToolStripMenuItem1.Text = "Agregar";
-            this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
-            // 
-            // verTodasToolStripMenuItem1
-            // 
-            this.verTodasToolStripMenuItem1.Name = "verTodasToolStripMenuItem1";
-            this.verTodasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.verTodasToolStripMenuItem1.Text = "Ver";
-            // 
-            // agregarToolStripMenuItem2
-            // 
-            this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
-            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.agregarToolStripMenuItem2.Text = "Agregar";
             // 
             // vistaPrincipal
             // 

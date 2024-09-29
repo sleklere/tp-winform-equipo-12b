@@ -90,6 +90,25 @@ namespace TPWinForm_equipo12b
                 datos.CerrarConexion();
             }
         }
+        public void Agregar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("INSERT INTO CATEGORIAS (Descripcion) VALUES (@Descripcion)");
+                datos.AgregarParametro("@Descripcion", categoria.Descripcion);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
         public void Modificar(Marca marca)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -100,6 +119,29 @@ namespace TPWinForm_equipo12b
 
                 datos.AgregarParametro("@Descripcion", marca.Descripcion);
                 datos.AgregarParametro("@Id", marca.Id); 
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public void Modificar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("UPDATE CATEGORIAS SET Descripcion = @Descripcion WHERE Id = @Id");
+
+                datos.AgregarParametro("@Descripcion", categoria.Descripcion);
+                datos.AgregarParametro("@Id", categoria.Id); 
 
                 datos.EjecutarAccion();
             }
@@ -311,6 +353,23 @@ namespace TPWinForm_equipo12b
                 throw ex;
             }
         }
+
+        public void EliminarCategoria(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.SetearConsulta("delete from CATEGORIAS where id = @id");
+                datos.AgregarParametro("@id", id);
+                datos.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 
 }
