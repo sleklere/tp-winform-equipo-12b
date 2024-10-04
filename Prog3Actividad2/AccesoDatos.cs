@@ -18,8 +18,8 @@ using System.Threading.Tasks;
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=localhost;database=CATALOGO_P3_DB;integrated security=true;");
-            comando = new SqlCommand();
+        conexion = new SqlConnection("server=localhost\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true;");
+        comando = new SqlCommand();
         }
 
         public void SetearConsulta(string consulta)

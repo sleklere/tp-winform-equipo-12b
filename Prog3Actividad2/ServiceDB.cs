@@ -47,6 +47,99 @@ namespace TPWinForm_equipo12b
                 accesoDatos.CerrarConexion();
             }
         }
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion AS Descripcion, M.Descripcion AS DescripcionMarca, C.Descripcion AS DescripcionCategoria, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND ";
+                if (campo == "Id")
+                {
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "A.Id > " + filtro;
+                            break;
+                        case "Menor a":
+                            consulta += "A.Id < " + filtro;
+                            break;
+                        default:
+                            consulta += "A.Id = " + filtro;
+                            break;
+                    }
+                }
+                else if (campo == "Nombre")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "Nombre like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "Nombre like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "Nombre like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else if (campo == "Marca")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "M.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "M.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "M.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "C.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "C.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "C.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+
+                accesoDatos.SetearConsulta(consulta);
+                accesoDatos.EjecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)accesoDatos.Lector["Id"];
+                    aux.Codigo = (string)accesoDatos.Lector["Codigo"];
+                    aux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    aux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)accesoDatos.Lector["DescripcionMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)accesoDatos.Lector["DescripcionCategoria"];
+                    aux.Precio = (decimal)accesoDatos.Lector["Precio"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void Agregar(Articulo art)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -250,6 +343,40 @@ namespace TPWinForm_equipo12b
                 }
 
                 return img;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
+        public List<Imagen> GetImgsByArticuloId(int IdArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Imagen> imagenes = new List<Imagen>();
+
+            try
+            {
+                datos.SetearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES WHERE IdArticulo = @IdArticulo");
+                datos.AgregarParametro("@IdArticulo", IdArticulo);
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Imagen img = new Imagen();
+                    img.Id = (int)datos.Lector["Id"];
+                    img.IdArticulo = (int)datos.Lector["IdArticulo"];
+                    img.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    imagenes.Add(img);
+                }
+
+                return imagenes;
             }
             catch (Exception ex)
             {

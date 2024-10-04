@@ -38,6 +38,13 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.lblCampo = new System.Windows.Forms.Label();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.lblFiltro = new System.Windows.Forms.Label();
+            this.inputCampo = new System.Windows.Forms.ComboBox();
+            this.inputCriterio = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.inputFiltro = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
@@ -88,28 +95,28 @@
             // verTodasToolStripMenuItem1
             // 
             this.verTodasToolStripMenuItem1.Name = "verTodasToolStripMenuItem1";
-            this.verTodasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.verTodasToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.verTodasToolStripMenuItem1.Text = "Ver";
             this.verTodasToolStripMenuItem1.Click += new System.EventHandler(this.verTodasToolStripMenuItem1_Click);
             // 
             // agregarToolStripMenuItem2
             // 
             this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
-            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
             this.agregarToolStripMenuItem2.Text = "Agregar";
             this.agregarToolStripMenuItem2.Click += new System.EventHandler(this.agregarToolStripMenuItem2_Click);
             // 
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(20, 61);
+            this.dgvArticulos.Location = new System.Drawing.Point(20, 101);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.Size = new System.Drawing.Size(760, 298);
             this.dgvArticulos.TabIndex = 1;
             // 
             // btnDetalle
             // 
-            this.btnDetalle.Location = new System.Drawing.Point(130, 383);
+            this.btnDetalle.Location = new System.Drawing.Point(130, 423);
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(75, 23);
             this.btnDetalle.TabIndex = 3;
@@ -119,7 +126,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(20, 383);
+            this.btnAgregar.Location = new System.Drawing.Point(20, 423);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(104, 23);
             this.btnAgregar.TabIndex = 4;
@@ -127,11 +134,81 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // lblCampo
+            // 
+            this.lblCampo.AutoSize = true;
+            this.lblCampo.Location = new System.Drawing.Point(20, 52);
+            this.lblCampo.Name = "lblCampo";
+            this.lblCampo.Size = new System.Drawing.Size(40, 13);
+            this.lblCampo.TabIndex = 5;
+            this.lblCampo.Text = "Campo";
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(221, 52);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(39, 13);
+            this.lblCriterio.TabIndex = 6;
+            this.lblCriterio.Text = "Criterio";
+            // 
+            // lblFiltro
+            // 
+            this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Location = new System.Drawing.Point(421, 52);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(29, 13);
+            this.lblFiltro.TabIndex = 7;
+            this.lblFiltro.Text = "Filtro";
+            // 
+            // inputCampo
+            // 
+            this.inputCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputCampo.FormattingEnabled = true;
+            this.inputCampo.Location = new System.Drawing.Point(80, 48);
+            this.inputCampo.Name = "inputCampo";
+            this.inputCampo.Size = new System.Drawing.Size(121, 21);
+            this.inputCampo.TabIndex = 8;
+            this.inputCampo.SelectedIndexChanged += new System.EventHandler(this.inputCampo_SelectedIndexChanged);
+            // 
+            // inputCriterio
+            // 
+            this.inputCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputCriterio.FormattingEnabled = true;
+            this.inputCriterio.Location = new System.Drawing.Point(280, 48);
+            this.inputCriterio.Name = "inputCriterio";
+            this.inputCriterio.Size = new System.Drawing.Size(121, 21);
+            this.inputCriterio.TabIndex = 9;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(596, 47);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 10;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // inputFiltro
+            // 
+            this.inputFiltro.Location = new System.Drawing.Point(476, 48);
+            this.inputFiltro.Name = "inputFiltro";
+            this.inputFiltro.Size = new System.Drawing.Size(100, 20);
+            this.inputFiltro.TabIndex = 11;
+            // 
             // vistaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 518);
+            this.Controls.Add(this.inputFiltro);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.inputCriterio);
+            this.Controls.Add(this.inputCampo);
+            this.Controls.Add(this.lblFiltro);
+            this.Controls.Add(this.lblCriterio);
+            this.Controls.Add(this.lblCampo);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.dgvArticulos);
@@ -161,5 +238,12 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verTodasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem2;
+        private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Label lblCriterio;
+        private System.Windows.Forms.Label lblFiltro;
+        private System.Windows.Forms.ComboBox inputCampo;
+        private System.Windows.Forms.ComboBox inputCriterio;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox inputFiltro;
     }
 }

@@ -15,6 +15,8 @@ namespace TPWinForm_equipo12b
     public partial class Detalle : Form
     {
         private Articulo artDetalle;
+        private int numImg = 0;
+        private List<Imagen> imagenes;
         public Detalle(Articulo _artDetalle)
         {
             ServiceDB service = new ServiceDB();
@@ -28,13 +30,18 @@ namespace TPWinForm_equipo12b
             categoria.Text = _artDetalle.Categoria.ToString();
             try
             {
-                imagenBox.Load(service.GetImgByArticuloId(_artDetalle.Id).ImagenUrl);
+                imagenes = service.GetImgsByArticuloId(_artDetalle.Id);
+
+                if (imagenes.Count > 0)
+                {
+                    imagenBox.Load(imagenes[numImg].ImagenUrl);
+                }
             }
             catch (Exception ex)
             {
-                imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
+                  imagenBox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx4xrkRCeiKCPwkflbkXd11W_2fzx34RemdWXmv8TXYWLT2SGtLfkqFCyBb_CBoNcNVBc&usqp=CAU");
             }
-            //imagenBox.Load(service.GetImgByArticuloId(_artDetalle.Id).ImagenUrl);
+ 
             precio.Text = "$" + _artDetalle.Precio.ToString();
         }
 
@@ -87,5 +94,31 @@ namespace TPWinForm_equipo12b
             }
         }
 
+        private void arrowRight_Click(object sender, EventArgs e)
+        {
+            if (imagenes != null && imagenes.Count > 1)
+            {
+                numImg++;
+                if (numImg >= imagenes.Count)
+                {
+                    numImg = 0; 
+                }
+                imagenBox.Load(imagenes[numImg].ImagenUrl);
+            }
+        }
+
+        private void arrowLeft_Click(object sender, EventArgs e)
+        {
+            if (imagenes != null && imagenes.Count > 1)
+            {
+                numImg--;
+                if (numImg < 0)
+                {
+                    numImg = imagenes.Count - 1;
+                }
+                Console.WriteLine(imagenes[numImg].ImagenUrl);
+                imagenBox.Load(imagenes[numImg].ImagenUrl);
+            }
+        }
     }
 }

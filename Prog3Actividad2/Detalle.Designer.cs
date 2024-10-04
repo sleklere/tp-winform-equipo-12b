@@ -43,6 +43,8 @@
             this.marca = new System.Windows.Forms.Label();
             this.categoria = new System.Windows.Forms.Label();
             this.precio = new System.Windows.Forms.Label();
+            this.arrowLeft = new System.Windows.Forms.Button();
+            this.arrowRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imagenBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,11 +185,33 @@
             this.precio.TabIndex = 33;
             this.precio.Text = "$-";
             // 
+            // arrowLeft
+            // 
+            this.arrowLeft.Location = new System.Drawing.Point(326, 151);
+            this.arrowLeft.Name = "arrowLeft";
+            this.arrowLeft.Size = new System.Drawing.Size(22, 23);
+            this.arrowLeft.TabIndex = 34;
+            this.arrowLeft.Text = "<";
+            this.arrowLeft.UseVisualStyleBackColor = true;
+            this.arrowLeft.Click += new System.EventHandler(this.arrowLeft_Click);
+            // 
+            // arrowRight
+            // 
+            this.arrowRight.Location = new System.Drawing.Point(623, 151);
+            this.arrowRight.Name = "arrowRight";
+            this.arrowRight.Size = new System.Drawing.Size(25, 23);
+            this.arrowRight.TabIndex = 35;
+            this.arrowRight.Text = ">";
+            this.arrowRight.UseVisualStyleBackColor = true;
+            this.arrowRight.Click += new System.EventHandler(this.arrowRight_Click);
+            // 
             // Detalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.Controls.Add(this.arrowRight);
+            this.Controls.Add(this.arrowLeft);
             this.Controls.Add(this.precio);
             this.Controls.Add(this.categoria);
             this.Controls.Add(this.marca);
@@ -231,5 +255,7 @@
         private System.Windows.Forms.Label marca;
         private System.Windows.Forms.Label categoria;
         private System.Windows.Forms.Label precio;
+        private System.Windows.Forms.Button arrowLeft;
+        private System.Windows.Forms.Button arrowRight;
     }
 }

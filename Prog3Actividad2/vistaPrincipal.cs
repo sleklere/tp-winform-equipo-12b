@@ -49,6 +49,10 @@ namespace TPWinForm_equipo12b
         private void vistaPrincipal_Load(object sender, EventArgs e)
         {
             Cargar();
+            inputCampo.Items.Add("Id");
+            inputCampo.Items.Add("Nombre");
+            inputCampo.Items.Add("Marca");
+            inputCampo.Items.Add("Categoria");
         }
 
         private void btnDetalle_Click(object sender, EventArgs e)
@@ -98,6 +102,87 @@ namespace TPWinForm_equipo12b
         {
             FormCategoria formCategoria = new FormCategoria();
             formCategoria.ShowDialog();
+        }
+
+        private void inputCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = inputCampo.SelectedItem.ToString();
+            if (opcion == "Id")
+            {
+                inputCriterio.Items.Clear();
+                inputCriterio.Items.Add("Mayor a");
+                inputCriterio.Items.Add("Menor a");
+                inputCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                inputCriterio.Items.Clear();
+                inputCriterio.Items.Add("Comienza con");
+                inputCriterio.Items.Add("Termina con");
+                inputCriterio.Items.Add("Contiene");
+            }
+
+        }
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
+        }
+
+        private bool validarFiltro()
+        {
+            if (inputCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo para filtrar.");
+                return true;
+            }
+            if (inputCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
+                return true;
+            }
+            if (inputCampo.SelectedItem.ToString() == "Número")
+            {
+                if (string.IsNullOrEmpty(inputFiltro.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para numéricos...");
+                    return true;
+                }
+                if (!(soloNumeros(inputFiltro.Text)))
+                {
+                    MessageBox.Show("Solo nros para filtrar por un campo numérico...");
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            ServiceDB service = new ServiceDB();
+            try
+            {
+                if (validarFiltro())
+                    return;
+
+                string campo = inputCampo.SelectedItem.ToString();
+                string criterio = inputCriterio.SelectedItem.ToString();
+                string filtro = inputFiltro.Text;
+                dgvArticulos.DataSource = service.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }
